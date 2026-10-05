@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midnight Harvest & Spooky Season</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="nav.js" defer></script>
+    <!-- Google Fonts: Creepster for eerie titles & Plus Jakarta Sans / Playfair for text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons for spooky UI items -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="embers-container">
+        <div class="floating-ember"></div>
+        <div class="floating-ember"></div>
+        <div class="floating-ember"></div>
+        <div class="floating-ember"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-hat-wizard"></i>
+                    <span>Midnight Harvest</span>
+                </a>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+                <div class="nav-menu" id="primary-navigation">
+                    <ul class="nav-links">
+                        <li><a href="#home" class="active">Realm</a></li>
+                        <li><a href="#attractions">Spooky Attractions</a></li>
+                        <li><a href="#brew">Witch's Brew</a></li>
+                        <li><a href="pumpkin.html">Join Coven</a></li>
+                    </ul>
+                    <a href="#brew" class="btn-cta">
+                        <i class="fa-solid fa-flask"></i> Stir Cauldron
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" id="home">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="seasonal-badge">
+                            <i class="fa-solid fa-moon"></i> October Twilight Realm
+                        </div>
+                        <h1>Shadows, Spooks & <span>October Nights</span></h1>
+                        <p>Beyond the moonlit twilight lies a season of pumpkin patches, misty haunts, and enchanted
+                            night rituals. Step into the harvest—if you dare.</p>
+                        <div class="hero-actions">
+                            <a href="#brew" class="btn-cta">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Taste The Brew
+                            </a>
+                            <a href="#attractions" class="btn-secondary">
+                                <i class="fa-solid fa-ghost"></i> Haunted Events
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-spooky-card">
+                        <img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?auto=format&fit=crop&w=800&q=80"
+                            alt="Glow of Jack-o-lantern in haunted woods"
+                            onerror="this.src='https://placehold.co/600x400/160d22/f97316?text=Haunted+October+Nights'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Witch's Cauldron Recipe Section -->
+        <section class="container" id="brew">
+            <div class="story-section">
+                <div class="story-grid">
+                    <!-- DETAILED VECTOR WITCH'S CAULDRON WITH GLOWING BREW & ANIMATIONS -->
+                    <div class="cauldron-container">
+                        <div class="cauldron-svg-wrapper">
+                            <svg viewBox="0 0 300 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Steam & Mist layer -->
+                                <g class="cauldron-steam">
+                                    <path d="M110 90C100 70 120 50 110 30" stroke="#4ade80" stroke-width="4"
+                                        stroke-linecap="round" opacity="0.6" />
+                                    <path d="M150 85C140 60 165 40 150 15" stroke="#a855f7" stroke-width="5"
+                                        stroke-linecap="round" opacity="0.7" />
+                                    <path d="M190 90C180 70 200 50 190 30" stroke="#4ade80" stroke-width="4"
+                                        stroke-linecap="round" opacity="0.6" />
+                                </g>
+
+                                <!-- Cauldron Feet/Stand -->
+                                <path d="M80 260 L60 295 C55 305 75 310 85 295 L100 260 Z" fill="#1e102d" />
+                                <path d="M220 260 L240 295 C245 305 225 310 215 295 L200 260 Z" fill="#1e102d" />
+                                <path d="M150 270 L150 300 C150 310 165 310 165 300 L165 270 Z" fill="#11071c" />
+
+                                <!-- Cauldron Body -->
+                                <ellipse cx="150" cy="195" rx="115" ry="85" fill="#170c24" stroke="#3b1d5c"
+                                    stroke-width="4" />
+                                <ellipse cx="150" cy="195" rx="110" ry="80" fill="url(#cauldronShading)" />
+
+                                <!-- Handles -->
+                                <path d="M35 170 C15 170 15 210 35 210" stroke="#4c2875" stroke-width="8"
+                                    stroke-linecap="round" fill="none" />
+                                <path d="M265 170 C285 170 285 210 265 210" stroke="#4c2875" stroke-width="8"
+                                    stroke-linecap="round" fill="none" />
+
+                                <!-- Rim -->
+                                <ellipse cx="150" cy="120" rx="95" ry="20" fill="#26123b" stroke="#6b21a8"
+                                    stroke-width="3" />
+
+                                <!-- Glowing Potion Liquid Surface -->
+                                <g class="cauldron-glow">
+                                    <ellipse cx="150" cy="120" rx="88" ry="16" fill="url(#potionGlow)" />
+                                </g>
+
+                                <!-- Bubbles popping in the potion -->
+                                <circle class="cauldron-bubble" cx="120" cy="118" r="8" fill="#86efac" opacity="0.9" />
+                                <circle class="cauldron-bubble-2" cx="155" cy="122" r="12" fill="#4ade80"
+                                    opacity="0.8" />
+                                <circle class="cauldron-bubble-3" cx="185" cy="116" r="6" fill="#bbf7d0"
+                                    opacity="0.9" />
+                                <circle class="cauldron-bubble" cx="140" cy="114" r="5" fill="#a855f7" opacity="0.7" />
+
+                                <!-- Magic Emblem on Cauldron Front -->
+                                <path
+                                    d="M150 175 L156 190 L172 190 L159 200 L164 215 L150 205 L136 215 L141 200 L128 190 L144 190 Z"
+                                    fill="none" stroke="#f97316" stroke-width="2" opacity="0.8"
+                                    filter="drop-shadow(0 0 5px #f97316)" />
+
+                                <!-- Gradients Definition -->
+                                <defs>
+                                    <radialGradient id="cauldronShading" cx="30%" cy="30%" r="70%">
+                                        <stop offset="0%" stop-color="#2a1640" />
+                                        <stop offset="70%" stop-color="#12081d" />
+                                        <stop offset="100%" stop-color="#09030f" />
+                                    </radialGradient>
+                                    <radialGradient id="potionGlow" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#86efac" />
+                                        <stop offset="55%" stop-color="#22c55e" />
+                                        <stop offset="85%" stop-color="#9333ea" />
+                                        <stop offset="100%" stop-color="#4c1d95" />
+                                    </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Recipe Content -->
+                    <div class="story-content">
+                        <div class="recipe-meta">
+                            <span><i class="fa-solid fa-wand-magic-sparkles"></i> Midnight Alchemies</span>
+                            <span><i class="fa-solid fa-skull"></i> 100% Spellbinding</span>
+                        </div>
+                        <h2 class="spooky-font" style="color: var(--accent-green); font-size: 3rem;">Witch's Enchanted
+                            Brew</h2>
+                        <p>Simmered under the glowing full moon, this wicked concoction blends tart dark blackberry
+                            elixir, glowing lime mist, ginger spice, and sparkling elderberry tonic.</p>
+
+                        <ul class="ingredient-list">
+                            <li><i class="fa-solid fa-eye"></i> 2 oz Dark Blackberry & Blackcurrant Nectar</li>
+                            <li><i class="fa-solid fa-flask-vial"></i> 1 oz Freshly Squeezed Lime & Mint Infusion</li>
+                            <li><i class="fa-solid fa-sparkles"></i> 3 oz Sparkling Elderberry Tonic</li>
+                            <li><i class="fa-solid fa-fire-flame-curved"></i> Dash of Ginger Essence & Edible Pearl Dust
+                            </li>
+                        </ul>
+
+                        <button class="btn-cta" onclick="castSpell()">
+                            <i class="fa-solid fa-flask"></i> Brew Potion Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attractions Section -->
+        <section class="container" id="attractions">
+            <div class="section-header">
+                <span class="sub-title">Dark Harvest Activities</span>
+                <h2 class="spooky-font">Midnight Attractions</h2>
+            </div>
+
+            <div class="highlights-grid">
+                <a class="feature-card" href="haunted.html">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-ghost"></i>
+                    </div>
+                    <h3>Haunted Trail Walk</h3>
+                    <p>Navigate through the foggy ancient oak forest filled with eerie surprises and moonlit shadows.
+                    </p>
+                </a>
+
+                <a class="feature-card" href="pumpkin.html">
+                    <div class="feature-icon-wrapper">
+                        <span aria-hidden="true">🎃</span>
+                    </div>
+                    <h3>Pumpkin Carving Coven</h3>
+                    <p>Master the art of sculpting sinister lanterns with artisan tools and glowing embers.</p>
+                </a>
+
+                <a class="feature-card" href="movies.html">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <h3>Horror Movie Marathon</h3>
+                    <p>Gather by the campfire under the open midnight sky for vintage horror cinema classics.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fa-solid fa-hat-wizard"></i>
+                        <span>Midnight Harvest</span>
+                    </a>
+                    <p>Curating dark elegance, pumpkin haunts, and enchanted October nights.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-ghost); margin-bottom: 12px;">Spooky Links</h4>
+                    <p><a href="#home" style="color: rgba(243,232,255,0.6); text-decoration: none;">Midnight Realm</a>
+                    </p>
+                    <p><a href="#brew" style="color: rgba(243,232,255,0.6); text-decoration: none;">Witch's Brew</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Holiday Pages.</p>
+                <p>Crafted with 🎃 & 🧙‍♀️ for Spooky Season</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Popup for Potion Spell -->
+    <div class="spooky-toast" id="spookyToast">
+        🧪 <i>Thick, heavy pockets of air pushed through the syrupy liquid, breaking with a sluggish snap.</i>
+    </div>
+
+    <script>
+        function castSpell() {
+            const toast = document.getElementById('spookyToast');
+            toast.style.display = 'block';
+
+            // Visual feedback on cauldron SVG bubbles
+            const bubbles = document.querySelectorAll('.cauldron-bubble, .cauldron-bubble-2, .cauldron-bubble-3');
+            bubbles.forEach(b => {
+                b.style.fill = "#f97316";
+            });
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+                bubbles.forEach(b => {
+                    b.style.fill = "#86efac";
+                });
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
