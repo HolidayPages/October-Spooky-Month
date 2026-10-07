@@ -268,6 +268,19 @@
         const cauldronStatus = document.getElementById('cauldronStatus');
         const brewButton = document.getElementById('brewButton');
         const addedIngredients = new Set();
+        let isBrewing = false;
+
+        function resetIngredients() {
+            addedIngredients.clear();
+            cauldronContents.replaceChildren();
+            ingredientButtons.forEach((button) => {
+                button.disabled = false;
+                button.textContent = 'Add';
+            });
+            brewButton.disabled = true;
+            cauldronStatus.textContent = 'Potion finished. Add ingredients to brew again.';
+            isBrewing = false;
+        }
 
         ingredientButtons.forEach((button) => {
             button.addEventListener('click', () => {
@@ -289,8 +302,10 @@
         });
 
         function castSpell() {
-            if (addedIngredients.size !== ingredientButtons.length) return;
+            if (isBrewing || addedIngredients.size !== ingredientButtons.length) return;
 
+            isBrewing = true;
+            brewButton.disabled = true;
             const toast = document.getElementById('spookyToast');
             const toastMessage = document.getElementById('spookyToastMessage');
             toast.style.display = 'block';
@@ -316,6 +331,7 @@
 
                     setTimeout(() => {
                         toast.style.display = 'none';
+                        resetIngredients();
                     }, 3000);
                 }, 1500);
             }, 4000);
