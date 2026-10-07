@@ -72,9 +72,8 @@
                     </div>
 
                     <div class="hero-spooky-card full-bleed-hero-card">
-                        <img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?auto=format&fit=crop&w=800&q=80"
-                            alt="Glow of Jack-o-lantern in haunted woods"
-                            onerror="this.src='https://placehold.co/600x400/160d22/f97316?text=Haunted+October+Nights'">
+                        <img src="index-images/main-page.jpg"
+                            alt="Glow of Jack-o-lantern in haunted woods">
                     </div>
                 </div>
             </div>
@@ -153,6 +152,10 @@
                                 </defs>
                             </svg>
                         </div>
+                        <div class="cauldron-recipe-state">
+                            <p class="cauldron-status" id="cauldronStatus" role="status" aria-live="polite">Add ingredients to begin your brew.</p>
+                            <ul class="cauldron-contents" id="cauldronContents" aria-label="Ingredients in the cauldron"></ul>
+                        </div>
                     </div>
 
                     <!-- Recipe Content -->
@@ -166,14 +169,26 @@
                         <p>Simmered under the glowing full moon, this wicked concoction blends tart dark blackberry
                             elixir, glowing lime mist, ginger spice, and sparkling elderberry tonic.</p>
 
-                        <ul class="ingredient-list">
-                            <li><span aria-hidden="true">🫐</span> 2 oz Dark Blackberry & Blackcurrant Nectar</li>
-                            <li><span aria-hidden="true">🍋🌿</span> 1 oz Freshly Squeezed Lime & Mint Infusion</li>
-                            <li><span aria-hidden="true">🫧🥤</span> 3 oz Sparkling Elderberry Tonic</li>
-                            <li><span aria-hidden="true">🫚✨</span> Dash of Ginger Essence & Edible Pearl Dust</li>
+                        <ul class="ingredient-list brew-ingredient-list">
+                            <li>
+                                <span class="ingredient-name"><span aria-hidden="true">🫐</span> 2 oz Dark Blackberry & Blackcurrant Nectar</span>
+                                <button class="ingredient-add" type="button" data-ingredient="Dark Blackberry & Blackcurrant Nectar">Add</button>
+                            </li>
+                            <li>
+                                <span class="ingredient-name"><span aria-hidden="true">🍋🌿</span> 1 oz Freshly Squeezed Lime & Mint Infusion</span>
+                                <button class="ingredient-add" type="button" data-ingredient="Freshly Squeezed Lime & Mint Infusion">Add</button>
+                            </li>
+                            <li>
+                                <span class="ingredient-name"><span aria-hidden="true">🫧🥤</span> 3 oz Sparkling Elderberry Tonic</span>
+                                <button class="ingredient-add" type="button" data-ingredient="Sparkling Elderberry Tonic">Add</button>
+                            </li>
+                            <li>
+                                <span class="ingredient-name"><span aria-hidden="true">🫚✨</span> Dash of Ginger Essence & Edible Pearl Dust</span>
+                                <button class="ingredient-add" type="button" data-ingredient="Ginger Essence & Edible Pearl Dust">Add</button>
+                            </li>
                         </ul>
 
-                        <button class="btn-cta" onclick="castSpell()">
+                        <button class="btn-cta" id="brewButton" type="button" onclick="castSpell()" disabled>
                             <i class="fa-solid fa-flask"></i> Brew Potion Now
                         </button>
                     </div>
@@ -243,14 +258,44 @@
     </footer>
 
     <!-- Toast Popup for Potion Spell -->
-    <div class="spooky-toast" id="spookyToast">
-        🧪 <i>Thick, heavy pockets of air pushed through the syrupy liquid, breaking with a sluggish snap.</i>
+    <div class="spooky-toast" id="spookyToast" role="status" aria-live="polite">
+        🧪 <i id="spookyToastMessage">Thick, heavy pockets of air pushed through the syrupy liquid, breaking with a sluggish snap.</i>
     </div>
 
     <script>
+        const ingredientButtons = document.querySelectorAll('.ingredient-add');
+        const cauldronContents = document.getElementById('cauldronContents');
+        const cauldronStatus = document.getElementById('cauldronStatus');
+        const brewButton = document.getElementById('brewButton');
+        const addedIngredients = new Set();
+
+        ingredientButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const ingredient = button.dataset.ingredient;
+                if (addedIngredients.has(ingredient)) return;
+
+                addedIngredients.add(ingredient);
+                const listItem = document.createElement('li');
+                listItem.textContent = ingredient;
+                cauldronContents.append(listItem);
+
+                button.disabled = true;
+                button.textContent = 'Added';
+                cauldronStatus.textContent = addedIngredients.size === ingredientButtons.length
+                    ? 'All ingredients added. Your brew is ready.'
+                    : `${addedIngredients.size} of ${ingredientButtons.length} ingredients added.`;
+                brewButton.disabled = addedIngredients.size !== ingredientButtons.length;
+            });
+        });
+
         function castSpell() {
+            if (addedIngredients.size !== ingredientButtons.length) return;
+
             const toast = document.getElementById('spookyToast');
+            const toastMessage = document.getElementById('spookyToastMessage');
             toast.style.display = 'block';
+            toastMessage.textContent = 'Thick, heavy pockets of air pushed through the syrupy liquid, breaking with a sluggish snap.';
+            cauldronStatus.textContent = 'Your potion is bubbling away.';
 
             // Visual feedback on cauldron SVG bubbles
             const bubbles = document.querySelectorAll('.cauldron-bubble, .cauldron-bubble-2, .cauldron-bubble-3');
@@ -263,6 +308,16 @@
                 bubbles.forEach(b => {
                     b.style.fill = "#86efac";
                 });
+
+                setTimeout(() => {
+                    toastMessage.textContent = 'Your potion is ready to serve!';
+                    toast.style.display = 'block';
+                    cauldronStatus.textContent = 'Your potion is ready to serve.';
+
+                    setTimeout(() => {
+                        toast.style.display = 'none';
+                    }, 3000);
+                }, 1500);
             }, 4000);
         }
     </script>
