@@ -433,6 +433,7 @@ header.nav-hidden:focus-within {
 .cauldron-container {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
@@ -445,6 +446,36 @@ header.nav-hidden:focus-within {
     max-width: 360px;
     position: relative;
     filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+}
+
+.cauldron-recipe-state {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+.cauldron-status {
+    min-height: 1.6em;
+    margin: 0 0 8px;
+    color: var(--accent-green);
+    font-size: 0.9rem;
+}
+
+.cauldron-contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    list-style: none;
+}
+
+.cauldron-contents li {
+    padding: 4px 8px;
+    border: 1px solid var(--border-spooky);
+    border-radius: var(--radius-sm);
+    color: var(--text-ghost);
+    background: rgba(13, 7, 20, 0.75);
+    font-size: 0.75rem;
 }
 
 /* Cauldron Animations */
@@ -559,6 +590,54 @@ header.nav-hidden:focus-within {
 .ingredient-list li i {
     color: var(--primary-pumpkin);
     font-size: 1.1rem;
+}
+
+.brew-ingredient-list li {
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.ingredient-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ingredient-add {
+    flex: 0 0 auto;
+    min-width: 76px;
+    padding: 7px 12px;
+    border: 1px solid var(--border-spooky);
+    border-radius: var(--radius-sm);
+    background: rgba(249, 115, 22, 0.12);
+    color: var(--text-ghost);
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.ingredient-add:hover:not(:disabled) {
+    border-color: var(--primary-pumpkin);
+    background: rgba(249, 115, 22, 0.24);
+}
+
+.ingredient-add:disabled {
+    color: var(--accent-green);
+    cursor: default;
+}
+
+.ingredient-add:focus-visible,
+.btn-cta:focus-visible {
+    outline: 2px solid var(--accent-green);
+    outline-offset: 3px;
+}
+
+.btn-cta:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
 }
 
 /* Feature Cards Section */
