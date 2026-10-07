@@ -717,6 +717,179 @@ a.feature-card {
     flex-grow: 1;
 }
 
+/* Pumpkin carving minigame */
+.carving-game-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+    align-items: center;
+    gap: 40px;
+    margin: 0 0 80px;
+}
+
+.carving-stage {
+    display: grid;
+    place-items: center;
+    min-height: 340px;
+    overflow: hidden;
+    border: 1px solid var(--border-spooky);
+    border-radius: var(--radius-md);
+    background: radial-gradient(ellipse at 50% 80%, rgba(249, 115, 22, 0.16), transparent 65%), rgba(8, 5, 12, 0.5);
+}
+
+.carving-pumpkin {
+    display: block;
+    width: min(100%, 440px);
+    height: auto;
+    aspect-ratio: 11 / 10.5;
+    overflow: visible;
+}
+
+.pumpkin-stem {
+    fill: #58753b;
+    stroke: #354a28;
+    stroke-width: 5;
+    stroke-linejoin: round;
+}
+
+.pumpkin-body {
+    fill: url(#pumpkinSkin);
+    stroke: #a94b16;
+    stroke-width: 5;
+}
+
+.pumpkin-lobe {
+    fill: rgba(255, 184, 79, 0.24);
+    stroke: rgba(117, 43, 14, 0.5);
+    stroke-width: 3;
+}
+
+.pumpkin-groove {
+    fill: none;
+    stroke: rgba(117, 43, 14, 0.55);
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.carving-piece {
+    cursor: pointer;
+    fill: rgba(40, 19, 17, 0.32);
+    stroke: #ffe0a0;
+    stroke-width: 3;
+    stroke-dasharray: 6 5;
+    stroke-linejoin: round;
+    transition: fill 180ms ease, stroke 180ms ease, filter 180ms ease;
+}
+
+.carving-piece:hover,
+.carving-piece:focus-visible {
+    fill: rgba(255, 218, 113, 0.55);
+    stroke: #fff4ce;
+    outline: none;
+}
+
+.carving-piece.is-carved {
+    fill: #ffe37b;
+    stroke: #fff3bd;
+    stroke-dasharray: none;
+    filter: url(#cutGlow);
+}
+
+.carving-piece.is-carved:hover,
+.carving-piece.is-carved:focus-visible {
+    fill: #fff0a6;
+}
+
+.carved-fragment {
+    fill: url(#pumpkinSkin);
+    stroke: #ffd28b;
+    stroke-width: 3;
+    stroke-linejoin: round;
+    filter: url(#cutGlow);
+    pointer-events: none;
+}
+
+.scrap-bag-body {
+    fill: #172a24;
+    stroke: #79a17b;
+    stroke-width: 4;
+    stroke-linejoin: round;
+}
+
+.scrap-bag-rim {
+    fill: #243c31;
+    stroke: #91b894;
+    stroke-width: 3;
+    stroke-linejoin: round;
+}
+
+.scrap-bag-fold {
+    fill: none;
+    stroke: rgba(173, 211, 163, 0.55);
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.scrap-bag-label,
+.scrap-bag-count {
+    fill: var(--text-ghost);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+.scrap-bag-label {
+    fill: #b9d5b4;
+    font-size: 9px;
+    letter-spacing: 0;
+}
+
+.carving-controls h3 {
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+}
+
+.carving-designs {
+    display: grid;
+    gap: 10px;
+}
+
+.carving-design {
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1px solid var(--bg-card-border);
+    border-radius: var(--radius-sm);
+    background: rgba(22, 13, 34, 0.72);
+    color: var(--text-ghost);
+    text-align: left;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.carving-design:hover,
+.carving-design.is-selected {
+    border-color: var(--primary-pumpkin);
+    background: rgba(249, 115, 22, 0.15);
+}
+
+.carving-progress {
+    min-height: 1.6em;
+    margin: 20px 0 16px;
+    color: var(--accent-green);
+}
+
+.carving-reset {
+    cursor: pointer;
+}
+
+.carving-design:focus-visible,
+.carving-reset:focus-visible {
+    outline: 2px solid var(--accent-green);
+    outline-offset: 3px;
+}
+
 /* Footer */
 footer {
     background-color: #06030a;
@@ -766,7 +939,8 @@ footer {
 @media (max-width: 992px) {
 
     .hero-grid,
-    .story-grid {
+    .story-grid,
+    .carving-game-layout {
         grid-template-columns: 1fr;
         gap: 40px;
     }
@@ -830,6 +1004,10 @@ footer {
 }
 
 @media (max-width: 520px) {
+    .carving-stage {
+        min-height: 260px;
+    }
+
     .logo {
         gap: 8px;
         font-size: 1.25rem;
